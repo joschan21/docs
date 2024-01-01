@@ -1,10 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
+  "name": "Splitter Docs",
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#0D9373",
@@ -18,12 +14,12 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:hello@joshtriedcoding.com"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://www.splitter.gg/dashboard"
   },
   "tabs": [
     {
@@ -31,48 +27,38 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
+  "anchors": [],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": ["introduction", "quickstart"]
     },
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "group": "Tracking",
+      "pages": ["tracking/clicks", "tracking/conversions"]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "group": "Concepts",
+      "pages": ["concepts/variant-algo"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Component APIs",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/component/experiment",
+        "api-reference/component/variant"
       ]
+    },
+    {
+      "group": "Tracking APIs",
+      "pages": ["api-reference/tracking/clicks", "api-reference/tracking/conversions"]
+    },
+    {
+      "group": "Middleware",
+      "pages": ["api-reference/middleware/middleware"]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "youtube": "https://www.youtube.com/@joshtriedcoding",
+    "twitter": "https://twitter.com/joshtriedcoding"
   }
 }

@@ -1,0 +1,29 @@
+---
+title: Tracking clicks
+description: How can I track events that are not conversions?
+---
+
+Splitter allows you the flexibility to track clicks on every JSX Element you can image. This allows you to track and improve your CTR, for example in the following use cases:
+
+- Tracking clicks on your newsletter sign-up button
+- Tracking clicks on your "Contact me" button
+- Tracking clicks on your "Download my CV" button
+- Tracking clicks on your "Buy now" button
+
+## Start tracking clicks
+
+```typescript ClientComponent.tsx
+"use client"
+import { useSplitter } from 'splitter-gg/client'
+
+const ClientComponent = () => {
+  const { trackClick } = useSplitter()
+
+  return (
+    <button onClick={() => trackClick('your-experiment-name')}>Buy now</button>
+  )
+}
+
+```
+
+

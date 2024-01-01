@@ -1,0 +1,20 @@
+---
+title: 'trackClick'
+---
+
+A client-side utility to track visitor clicks. This utility works purely client-side to form a user hash at request time, allowing Splitter to determine which variant this user was shown.
+
+## Usage
+```typescript
+import { useSplitter } from 'splitter-gg/client'
+
+const { trackClick } = useSplitter()
+
+trackClick('experiment-name')
+```
+
+## Arguments
+
+<ResponseField name='name' type='string' required>
+  The name you've given your experiment in the Splitter dashboard.
+</ResponseField>

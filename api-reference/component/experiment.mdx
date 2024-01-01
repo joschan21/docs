@@ -1,0 +1,25 @@
+---
+title: 'Experiment'
+---
+
+The `<Experiment />` component is used to wrap a set of `<Variant />` components. It will randomly select one of the variants to render, unless the visitor is a returning visitor. In that case, the previously shown variant will be shown again within a 24-hour timeframe. 
+
+The `<Experiment />` component will also send an event to the analytics service when a variant is selected and shown to your visitor, called an impression.
+
+## Props
+
+<ResponseField name="name" type="string" required>
+  The name you've given your experiment in the Splitter dashboard.
+</ResponseField>
+
+<ResponseField name="devVariant" type="string">
+  Name of a variant to force the experiment to show. Useful for development.
+</ResponseField>
+
+<ResponseField name="devLogging" type="boolean">
+  Whether to log events during development. Enabled by default.
+</ResponseField>
+
+<ResponseField name="children" type="JSX Elements">
+  Children need to be `<Variant />` components.
+</ResponseField>

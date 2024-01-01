@@ -1,0 +1,47 @@
+---
+title: 'Middleware'
+---
+
+The Splitter middleware is a server-side function that wraps your existing [next.js middleware](https://nextjs.org/docs/app/building-your-application/routing/middleware). It's job is to create a hash to identify returning users, ensuring that they always see the same variant within a 24-hour timeframe.
+
+This prevents users from seeing different variants of the same experiment to get reliable results and improve your visitor's user experience.
+
+## Usage
+
+```typescript middleware.ts
+import { NextResponse } from 'next/server'
+import { withSplitter } from 'splitter-gg/middleware'
+
+const middleware = () => {
+  // Your existing Next.js middleware
+  return NextResponse.next()
+}
+
+export default withSplitter(middleware)
+
+export const config = {
+  matcher: ['/'],
+}
+```
+
+Or alternatively, if you prefer to use callback syntax:
+
+```typescript middleware.ts
+import { NextResponse } from 'next/server'
+import { withSplitter } from 'splitter-gg/middleware'
+
+export const middleware = withSplitter(() => {
+  // Your existing Next.js middleware
+  return NextResponse.next()
+})
+
+export const config = {
+  matcher: ['/'],
+}
+```
+
+## Arguments
+
+<ResponseField name="middleware" type="NextMiddleware" required>
+  Any existing Next.js middleware.
+</ResponseField>

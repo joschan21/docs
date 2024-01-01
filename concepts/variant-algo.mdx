@@ -1,0 +1,28 @@
+---
+title: 'How variants are chosen'
+description: 'Learn how we determine which variant to show to new or returning visitors'
+icon: 'gear'
+---
+
+### How does Splitter know which variant to show?
+We keep track of every impression for each variant. Based on this information, at least in Splitter v2, we would always show the least-shown variant when a new visitor arrives on your site.
+This way, each variant in your experiment is almost exactly shown equally. 
+
+However, there was **one major downside** with this approach.
+
+The determination of which variant to show when a user visits your site needs to be fast. _Very fast_ in fact, because we cannot render the site before knowing which variant to show to a visitor. 
+Imagine visiting a website only to see that a component is switched out for another one shortly after the page loaded. That would be a horrible UX.
+
+This determinate way of figuring out our variant might look a bit nicer in the dashboard, but involves involves several steps and proved to be slow.
+
+### How the decision making process works
+
+Each variant is assigned a weight depending on the sum of variants in an experiment. The odds of each variant being shown are equal and will converge the more visits your site gets.
+
+For example, assume we conduct an A/B-test for our landing page layout. Each layout would be shown with the following probability:
+
+- Layout A, 33% chance
+- Layout B, 33% chance
+- Layout C, 33% chance
+
+This approach allows us to respond to your users **almost instantly**, much faster than a determinate algorithm such as the one described above ever could. Of course, these probabilites only apply for new visitors. To ensure a consistent UX, returning visitors will always be shown the same variant within a 24-hour timeframe.

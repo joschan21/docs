@@ -1,0 +1,75 @@
+---
+title: Tracking conversions
+description: Learn how to track conversions with Splitter
+---
+
+To optimize your metrics, you need to track how many people actually convert. A conversion is an event that happens when a user completes a desired action on your website. For example:
+
+- Someone confirms their email for your newsletter
+- Someone submits your contact form
+- Someone purchases the pro plan for your SaaS
+
+This is by far the most important metric to compare your variants performance side by side in the Splitter dashboard. All you need to do is track the conversion in your app when a user completes your desired action.
+
+
+## Start tracking conversions
+
+In the most basic way, you can track a conversion the same way as tracking a click.
+
+```typescript ClientComponent.tsx
+"use client"
+import { useSplitter } from 'splitter-gg/client'
+
+const ClientComponent = () => {
+  const { trackConversion } = useSplitter()
+
+  return (
+    <button onClick={() => trackConversion('experiment-name')}>Sign up</button>
+  )
+}
+```
+
+## Example: Tracking a newsletter signup 
+
+However, rarely would you want to track a conversion simply when a button is pressed. Let's take a look at a real example on how to track a conversion for a newsletter using react-query.
+
+Once this API route resolves successfully, your user is signed up for the newsletter. You can then track the conversion to attribute it to the variant that was shown to the user.
+
+```typescript NewsletterSignup.tsx 15
+"use client"
+ 
+import { useMutation } from '@tanstack/react-query'
+import { useState } from 'react'
+import { useSplitter } from 'splitter-gg/client'
+ 
+const NewsletterSignup = () => {
+  const { trackConversion } = useSplitter()
+  const [email, setEmail] = useState('')
+ 
+  const { mutate: signupForNewsletter } = useMutation({
+    mutationFn: async (email: string) => {
+      await fetch('/api/newsletter', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+      })
+    },
+    onSuccess: () => {
+      // track newsletter sign-up conversion
+      trackConversion('newsletter-signup-experiment') 
+    },
+  })
+ 
+  return (
+    <div>
+      <input
+        type='text'
+        value={email}
+        onChange={({ target }) => setEmail(target.value)}
+      />
+      <button onClick={() => signupForNewsletter(email)}>Sign up now</button>
+    </div>
+  )
+}
+ 
+export default NewsletterSignup
+```
